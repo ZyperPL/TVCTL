@@ -22,13 +22,13 @@ void help(char *name)
   std::cerr << ">  remove \"[series_name]\"\t - removes TV series from database" << std::endl;
   std::cerr << "\tseries_name\t - TV series name added previously" << std::endl;
 
-  std::cerr << ">  see \"[series_name]\" [sXXeYY]\t - marks an episode as seen" << std::endl;
+  std::cerr << ">  see \"[series_name]\" [SxxEyy]\t - marks an episode as seen" << std::endl;
   std::cerr << "\tseries_name\t - TV series name" << std::endl;
-  std::cerr << "\tsXXeYY\t\t - season XX number and episode YY number" << std::endl;
+  std::cerr << "\tSxxEyy\t\t - season XX number and episode YY number" << std::endl;
 
-  std::cerr << ">  new \"[series_name]\" [sXXeYY]\t - marks an episode as seen" << std::endl;
+  std::cerr << ">  new \"[series_name]\" [SxxEyy]\t - marks an episode as seen" << std::endl;
   std::cerr << "\tseries_name\t - TV series name" << std::endl;
-  std::cerr << "\tsXXeYY\t\t - season XX number and episode YY number" << std::endl;
+  std::cerr << "\tSxxEyy\t\t - season XX number and episode YY number" << std::endl;
   
   std::cerr << ">  check (info) (seen)\t - prints unseen(/seen) episodes" << std::endl;
   std::cerr << "\tinfo\t - optional: prints extra info" << std::endl;

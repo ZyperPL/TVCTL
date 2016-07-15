@@ -214,7 +214,7 @@ void Database::update()
 
 void Database::save()
 {
-  std::cerr << "Saving changed..." << std::endl;
+  std::cerr << "Saving changes..." << std::endl;
 
   rapidxml::xml_document<> doc;
   
