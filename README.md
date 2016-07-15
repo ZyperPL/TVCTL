@@ -1,8 +1,18 @@
 # TVCTL
 Tool for keeping track of watched TV series and episodes
   
+## Building and running
+You will need `libcurl` to build and use TVCTL.  
+Build using these commands:  
+    $ mkdir -p obj
+    $ make
+    
+  
+Executable will be created in your current directory. Run it with: `./tvctl`.
+
+  
 ## Usage  
-    tvctl [command] [parameter]
+    ./tvctl [command] [parameter]
       
 Available commands are:
 * `add "[series_name]"`
