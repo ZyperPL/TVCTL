@@ -85,7 +85,7 @@ bool Database::addSeries(std::string data)
   return true;
 }
 
-void Database::update()
+bool Database::update()
 {
   std::cerr << "Updating database..." << std::endl;
 
@@ -102,14 +102,21 @@ void Database::update()
     url += "/all/en.xml";
     data = Downloader::get(url);
 
+    if (data == "") return false;
+
     std::vector<Episode*> episodes2;
 
     rapidxml::xml_document<> doc;
     doc.parse<0>((char *)data.c_str());
-    rapidxml::xml_node<> *node;
+    rapidxml::xml_node<> *node = NULL;
     std::cerr << "Parsing episodes of " << (*it)->name << "..." << std::endl;
    
-    node = doc.first_node()->first_node("Episode");
+    rapidxml::xml_node<> *extNode = doc.first_node();
+    if (!extNode) {
+      std::cerr << "ERROR: Wrong data.xml format!\n";
+      return false;
+    }
+    node = extNode->first_node("Episode");
     while (node != 0)
     {
       std::string id      = node->first_node("id")->value();
@@ -210,6 +217,8 @@ void Database::update()
       }  
     }
   }
+
+  return true;
 }
 
 void Database::save()

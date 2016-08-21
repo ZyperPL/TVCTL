@@ -67,6 +67,7 @@ std::string Downloader::get(std::string url)
   if (res != CURLE_OK)
   {
     std::cerr << "ERROR: " << curl_easy_strerror(res) << std::endl;
+    return "";
   } 
   curl_easy_reset(curl);
 

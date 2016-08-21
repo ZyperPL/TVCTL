@@ -209,11 +209,12 @@ int main (int argc, char *argv[])
   if (command == "update"
   ||  command == "u")
   {
-    database->update();
-    database->save();
+    bool ret = database->update();
+    if (ret) database->save();
   } else
   {
     std::cerr << "Unknown " << argv[0] << " command: " << command << std::endl;
+    return 2;
   }
 
   return 0;

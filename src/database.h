@@ -21,7 +21,7 @@ class Database
   public:
     Database();
     bool addSeries(std::string data);
-    void update();
+    bool update();
     void save();
     void load(std::string fileName);
 
