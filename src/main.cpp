@@ -74,6 +74,10 @@ int main (int argc, char *argv[])
 
   if (command == "add")
   {
+    if (parameter.size() <= 0) {
+      help(argv[0]);
+      return 1;
+    }
     std::cerr << "Searching for " << parameter << "..." << std::endl; 
     std::string url = "http://thetvdb.com/api/GetSeries.php?seriesname=";
     parameter = Downloader::encodeUrl(parameter);
@@ -86,6 +90,10 @@ int main (int argc, char *argv[])
   } else
   if (command == "remove")
   {
+    if (parameter.size() <= 0) {
+      help(argv[0]);
+      return 1;
+    }
     std::cerr << "Removing " << parameter << "..." << std::endl; 
     bool ret = false;
     for(std::vector<Series*>::iterator it = database->getList()->begin();
@@ -107,6 +115,10 @@ int main (int argc, char *argv[])
   } else
   if (command == "see" || command == "new")
   {
+    if (parameter.size() <= 0) {
+      help(argv[0]);
+      return 1;
+    }
     std::string parameter2 = parameter.substr(parameter.find_last_of(" ")+1);
     std::string season = parameter2;
     std::string number = parameter2;
