@@ -45,6 +45,8 @@ Action::Action(std::string command)
 
 bool Action::addToDatabase(Database *db, std::string parameter)
 {
+  if (parameter.size() <= 0) return false;
+
   std::cerr << "Searching for " << parameter << "..." << std::endl; 
   std::string url = "http://thetvdb.com/api/GetSeries.php?seriesname=";
   parameter = Downloader::encodeUrl(parameter);
@@ -62,6 +64,8 @@ bool Action::addToDatabase(Database *db, std::string parameter)
 
 bool Action::removeFromDatabase(Database *db, std::string parameter)
 {
+  if (parameter.size() <= 0) return false;
+
   std::cerr << "Removing " << parameter << "..." << std::endl; 
   bool ret = false;
   for(std::vector<Series*>::iterator it = db->getList()->begin();
@@ -86,6 +90,8 @@ bool Action::removeFromDatabase(Database *db, std::string parameter)
 
 bool Action::markInDatabase(Database *db, std::string parameter, std::string command)
 {
+  if (parameter.size() <= 0) return false;
+
   std::string parameter2 = parameter.substr(parameter.find_last_of(" ")+1);
   std::string season = parameter2;
   std::string number = parameter2;
