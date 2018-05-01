@@ -1,6 +1,6 @@
 CC=g++
 LIBS=-lcurl
-FLAGS=-I. -I./src -std=c++11 -O3 -I./src/ $(LIBS)
+FLAGS=-I. -I./src -std=c++11 -O3 -I./src/ -ggdb $(LIBS)
 
 obj/%.o: src/%.cpp
 	$(CC) -c -o $@ $< $(FLAGS)

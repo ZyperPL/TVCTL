@@ -5,6 +5,14 @@ Database::Database()
 
 }
 
+Database::~Database()
+{
+  for (size_t i = 0; i < this->list.size(); i++)
+  {
+    delete (this->list.at(i));
+  }
+}
+
 bool Database::addSeries(std::string data)
 {
   rapidxml::xml_document<> doc;
@@ -190,7 +198,7 @@ bool Database::update()
       if (!exist)
       {
         std::cerr << "Adding new episode '" << (*kt)->title << "'..." << std::endl;
-        (*it)->episodes.push_back((*kt));  
+        (*it)->episodes.push_back(new Episode(**kt));  
       }  
     }
 
@@ -215,6 +223,11 @@ bool Database::update()
         std::cerr << "Erasing episode " << (*kt)->id << "..." << std::endl;
         (*it)->episodes.erase(kt);
       }  
+    }
+
+    for (size_t i = 0; i < episodes2.size(); i++)
+    {
+      delete episodes2.at(i);
     }
   }
 

@@ -75,12 +75,17 @@ bool Action::removeFromDatabase(Database *db, std::string parameter)
     if ((*it)->name == parameter)
     {
       std::cerr << "Series '" << parameter << "' removed.\n";
+      delete *it;
       db->getList()->erase(it);
       ret = true;
       break;
     }
   }
-  if (!ret) return false;
+  if (!ret) 
+  {
+    std::cerr << "Cannot find " << parameter << " series.\n";
+    return false;
+  }
 
   db->update();     
   db->save();

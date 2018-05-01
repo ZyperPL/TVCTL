@@ -67,8 +67,8 @@ int main (int argc, char *argv[])
     }
   }
 
-  Database *database = new Database();
-  database->load("data.xml");
+  Database database;
+  database.load("data.xml");
 
   Action action(command);
 
@@ -76,7 +76,7 @@ int main (int argc, char *argv[])
   
   if (action.execute)
   {
-    executed = action.execute(database, parameter);
+    executed = action.execute(&database, parameter);
 
     if (!executed)
     {

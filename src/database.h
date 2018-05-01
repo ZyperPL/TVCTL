@@ -20,6 +20,7 @@ class Database
     std::vector<Series*> list;
   public:
     Database();
+    ~Database();
     bool addSeries(std::string data);
     bool update();
     void save();
